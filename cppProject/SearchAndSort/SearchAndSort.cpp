@@ -3,6 +3,8 @@
 #include <cstdlib>
 #include <iostream>
 
+using namespace std;
+
 void swapInt(int* a, int* b){
     int temp = *a;
     *a = *b;

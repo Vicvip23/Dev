@@ -16,7 +16,7 @@ void bubbleSort(int* arr, int len){
     for(int i = 0; i < len; i++){
         for(int j = 1; j < len + 1; j++){
             if(*(arr + (j - 1)) > *(arr + j)){
-                swapInt(*(arr + (j - 1)),*(arr + j))
+                swapInt((arr + (j - 1)),(arr + j));
             };
         };
     };
@@ -102,9 +102,9 @@ int sentinelSearch(int* arr, int len, int key){
 
     *(arr + len - 1) = last;
  
-    if ((i < n - 1) || (*(arr + len - 1) == key)){
+    if ((i < len - 1) || (*(arr + len - 1) == key)){
         return key;
-    };
+    }
     else{return -1;};
 }
 
@@ -118,7 +118,7 @@ int binarySearch(int* arr, int first, int last, int key){
         };
         if (*(arr + mid) < key){
             first = mid + 1;
-        };
+        }
         else{
             last = mid - 1;
         };

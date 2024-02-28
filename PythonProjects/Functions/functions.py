@@ -1,32 +1,52 @@
 from tkinter import *
 import math
 from tkinter import messagebox
-import matplotlib.pylot as plt
+import matplotlib.pyplot as plt
+import numpy as np
+import matplotlib as mpl
+
 
 window = Tk()
 window.geometry("150x150")
 
-def linear(a, b, x):
-    return (a * x) + b
+def linear(a, b, x = []):
+    y = []
+    for item in x:
+        y.append((a * item) + b) 
+    return y
 
-def trigonometric(a, b, x):
-    return math.sin((a * x) + b)
+def trigonometric(a, b, x = []):
+    y = []
+    for item in x:
+        y.append(math.sin((a * item) + b)) 
+    return y
 
-def quadratic(a, b, x):
-    return math.pow((x - a), 2) + b
+def quadratic(a, b, x = []):
+    y = []
+    for item in x:
+        y.append(math.pow((item - a), 2) + b) 
+    return y
 
 def run():
     a = int(input1.get())
     b = int(input2.get())
     func = int(funcType.get())
     values = []
+    values = np.linspace(0,30,1000)
+    print(func)
     match func:
         case 1:
-            messagebox.showinfo("linear function", "result: " + linear(a,b))
+            plt.plot(values, linear(a, b, values))
+            plt.show()
+            print("lin")
         case 2:
-            messagebox.showinfo("trigonometric function", "result: " + trigonometric(a,b))
+            plt.plot(values, trigonometric(a, b, values))
+            plt.show()
+            print("trig")
         case 3:
-            messagebox.showinfo("quadratic function", "result: " + quadratic(a,b))
+            plt.plot(values, quadratic(a, b, values))
+            plt.show()
+            print("quad")
 
 funcType = IntVar()
 input1 = Entry(window)

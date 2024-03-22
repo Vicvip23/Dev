@@ -6,7 +6,7 @@ using namespace std;
 
 string toBinary(int n){
 
-     string result = '';
+     string result = "";
      while(n >= 1){
 
           if(n % 2 == 1){

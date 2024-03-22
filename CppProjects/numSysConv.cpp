@@ -45,12 +45,12 @@ string toHex(string bin){
 
 string toBinary(int n){
 
-    string result = '';
+    string result = "";
     while(n >= 1){
 
         if(n % 2 == 1){
             result = '1' + result;
-        };
+        }
         else{result = '0' + result;};
           
         n /= 2;
@@ -83,29 +83,29 @@ int toDecimal(string n){
 int main(){
 
     int convType;
+    int inputDec;
+    string inputBin;
 
-    cout << "Select conversion type:\nDecimal to Binary (input 1)\nBinary to Decimal (input 2)\nBinary to Hexadecimal (input 3)\n"; 
+    cout << "Select conversion type:\nDecimal to Binary (input 1)\nBinary to Decimal (input 2)\nBinary to Hexadecimal (input 3)\n";
+    cin >> convType;
 
     switch(convType){
         case 1:
-            int inputDec;
             cout << "Input your Decimal number: ";
             cin >> inputDec;
             cout << "The resulting Binary number is: " << toBinary(inputDec);
         break;
 
         case 2:
-            string inputBin1;
             cout << "Input your Decimal number: ";
-            cin >> inputBin1;
-            cout << "The resulting Binary number is: " << toDecimal(inputBin1);
+            cin >> inputBin;
+            cout << "The resulting Binary number is: " << toDecimal(inputBin);
         break;
 
         case 3:
-            string inputBin2;
             cout << "Input your Decimal number: ";
-            cin >> inputBin2;
-            cout << "The resulting Binary number is: " << toHex(inputBin2);
+            cin >> inputBin;
+            cout << "The resulting Binary number is: " << toHex(inputBin);
         break;
     };
 };

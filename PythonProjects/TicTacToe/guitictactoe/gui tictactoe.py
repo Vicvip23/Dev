@@ -45,7 +45,7 @@ def onClick(event):
     
     if ifComputer == True:
     
-        computerPlay()
+        root.after(1500, computerPlay)
     
         winCheck()
         
@@ -131,8 +131,6 @@ def fullCheck():
 def computerPlay():
     
     correctPosition = False
-    
-    time.sleep(1.5)
 
     while correctPosition == False:
         position1 = random.randint(0,2)

@@ -80,7 +80,6 @@ def genFruit():
 def snakeAppendBody():
 
     snake.append(gameArea.create_rectangle(1244, 1255, 1254, 1265, fill='black'))
-    #root.after(1000, snakeAppendBody)
 
 
 def fruitCollision():
@@ -107,7 +106,6 @@ def updateGame():
     moveSnake()
     fruitCollision()
     snakeCollision()
-    #print(gameArea.find_overlapping(gameArea.coords(fruit)[0],gameArea.coords(fruit)[1],gameArea.coords(fruit)[2],gameArea.coords(fruit)[3]))
 
     root.after(int(time), updateGame)
 
@@ -121,6 +119,5 @@ root.bind("<KeyPress-Right>", changeDir)
 
 genFruit()
 updateGame()
-#snakeAppendBody()
 
 root.mainloop()

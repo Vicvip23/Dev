@@ -112,60 +112,62 @@ int main(){
     int test[8000];
     const int length = sizeof(test)/sizeof(test[0]);
 
+    printf("%s %lu\n\n", "array size is:", sizeof(test)/sizeof(test[0]));
+
 
 
     auto start = chrono::high_resolution_clock::now();
-
     fillWithUnique(&test[0], length, 8000);
-    
     auto end = chrono::high_resolution_clock::now();
-    auto duration = chrono::duration_cast<std::chrono::microseconds>(end-start);
+    auto duration = chrono::duration_cast<std::chrono::milliseconds>(end-start);
     
-    displayArray(&test[0], length);
-    printf("%s %lld %s\n", "filling the array with unique random numbers took:", duration.count(), "microseconds");
-
-
-
     start = chrono::high_resolution_clock::now();
-
-    insertionSort(&test[0], length);
-
+    displayArray(&test[0], length);
     end = chrono::high_resolution_clock::now();
-    duration = chrono::duration_cast<std::chrono::microseconds>(end-start);
-
-    displayArray(&test[0], length);
-    printf("%s %lld %s\n", "sorting the array using insertion sort took:", duration.count(), "microseconds");
+    auto displayDuration = chrono::duration_cast<std::chrono::milliseconds>(end-start);
+    
+    printf("\n%s %lld %s\n", "filling the array with unique random numbers took:", duration.count(), "milliseconds");
+    printf("%s %lld %s\n\n", "displaying the array took:", displayDuration.count(), "milliseconds");
 
 
 
     start = chrono::high_resolution_clock::now();
+    insertionSort(&test[0], length);
+    end = chrono::high_resolution_clock::now();
+    duration = chrono::duration_cast<std::chrono::milliseconds>(end-start);
+    
+    start = chrono::high_resolution_clock::now();
+    displayArray(&test[0], length);
+    end = chrono::high_resolution_clock::now();
+    displayDuration = chrono::duration_cast<std::chrono::milliseconds>(end-start);
+    
+    printf("\n%s %lld %s\n", "sorting the array using insertion sort took:", duration.count(), "milliseconds");
+    printf("%s %lld %s\n", "displaying the array took:", displayDuration.count(), "milliseconds");\
 
+
+
+    start = chrono::high_resolution_clock::now();
     int linearSearchResult = linearSearch(&test[0], length, test[7998]);
-
-    for(int i = 0; i < 199; i++){
+    for(int i = 0; i < 1999; i++){
         linearSearch(&test[0], length, test[7998]);
     };
-
     end = chrono::high_resolution_clock::now();
-    duration = chrono::duration_cast<std::chrono::microseconds>(end-start) / 200;
+    auto microDuration = chrono::duration_cast<std::chrono::microseconds>(end-start) / 2000;
 
-    printf("%s %lld %s\n", "searching the array for 7999th value using linear search took on average:", duration.count(), "microseconds");
+    printf("\n%s %lld %s\n", "searching the array for 7999th value using linear search (tried 200 times) took on average:", microDuration.count(), "microseconds");
     printf("%s %d\n", "index of searched value is:", linearSearchResult);
 
 
 
     start = chrono::high_resolution_clock::now();
-
     int binarySearchResult = binarySearch(&test[0], 0, length, test[7998]);
-
-    for(int i = 0; i < 999; i++){
+    for(int i = 0; i < 9999; i++){
         binarySearch(&test[0], 0, length, test[7998]);
     };
-
     end = chrono::high_resolution_clock::now();
-    auto nanoDuration = chrono::duration_cast<std::chrono::nanoseconds>(end-start) / 1000;
+    auto nanoDuration = chrono::duration_cast<std::chrono::nanoseconds>(end-start) / 10000;
 
-    printf("%s %lld %s\n", "searching the array for 7999th value using binary search took on average:", nanoDuration.count(), "nanoseconds");
+    printf("\n%s %lld %s\n", "searching the array for 7999th value using binary search (tried 10000 times) took on average:", nanoDuration.count(), "nanoseconds");
     printf("%s %d\n", "index of searched value is:", binarySearchResult);
 
 }

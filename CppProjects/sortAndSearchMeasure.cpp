@@ -137,8 +137,8 @@ int main(){
     end = chrono::high_resolution_clock::now();
     auto displayDuration = chrono::duration_cast<std::chrono::milliseconds>(end-start);
     
-    printf("\n%s %lld %s\n", "filling the array with unique random numbers took:", duration.count(), "milliseconds");
-    printf("%s %lld %s\n\n", "displaying the array took:", displayDuration.count(), "milliseconds");
+    printf("\n%s %ld %s\n", "filling the array with unique random numbers took:", duration.count(), "milliseconds");
+    printf("%s %ld %s\n\n", "displaying the array took:", displayDuration.count(), "milliseconds");
 
 
 
@@ -152,8 +152,8 @@ int main(){
     end = chrono::high_resolution_clock::now();
     displayDuration = chrono::duration_cast<std::chrono::milliseconds>(end-start);
     
-    printf("\n%s %lld %s\n", "sorting the array using insertion sort took:", duration.count(), "milliseconds");
-    printf("%s %lld %s\n", "displaying the array took:", displayDuration.count(), "milliseconds");\
+    printf("\n%s %ld %s\n", "sorting the array using insertion sort took:", duration.count(), "milliseconds");
+    printf("%s %ld %s\n", "displaying the array took:", displayDuration.count(), "milliseconds");\
 
 
 
@@ -165,7 +165,7 @@ int main(){
     end = chrono::high_resolution_clock::now();
     auto microDuration = chrono::duration_cast<std::chrono::microseconds>(end-start) / 10000;
 
-    printf("\n%s %lld %s\n", "searching the array for second to last value using linear search (tried 10000 times) took on average:", microDuration.count(), "microseconds");
+    printf("\n%s %ld %s\n", "searching the array for second to last value using linear search (tried 10000 times) took on average:", microDuration.count(), "microseconds");
     printf("%s %d\n", "index of searched value is:", linearSearchResult);
 
 
@@ -178,7 +178,7 @@ int main(){
     end = chrono::high_resolution_clock::now();
     auto nanoDuration = chrono::duration_cast<std::chrono::nanoseconds>(end-start) / 10000;
 
-    printf("\n%s %lld %s\n", "searching the array for second to last value using binary search (tried 10000 times) took on average:", nanoDuration.count(), "nanoseconds");
+    printf("\n%s %ld %s\n", "searching the array for second to last value using binary search (tried 10000 times) took on average:", nanoDuration.count(), "nanoseconds");
     printf("%s %d\n", "index of searched value is:", binarySearchResult);
 
     delete[] test;

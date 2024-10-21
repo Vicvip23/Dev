@@ -6,53 +6,46 @@ class Matrix{
 
 	private:
 
-		int** horizontal_ptr;
+		int* horizontal_ptr;
 		int horizontalLen;
 		int verticalLen;
 		bool verticalState;
 		
 		void restructure(){
 
-			for(int i = 0; i < this->horizontalLen; i++){
+			//for(int i = 0; i < this->horizontalLen; i++){
 
-				int* check = (int*) calloc(this->verticalLen, sizeof(int*));
+				this->horizontal_ptr = (int*) calloc(this->horizontalLen * this->verticalLen, sizeof(int));
 
-				this->horizontal_ptr[i] = check;
-			};
+				// if(check == NULL){
+				// 	free(check);
+				// 	return -1; 
+				// };
+			//};
+			// return 0;
 		};
 
 		void releaseMatrix(){
 
-			for(int i = 0; i < this->horizontalLen; i++){
-				free(this->horizontal_ptr + i);
-			};
-
+			free(this->horizontal_ptr);
 		};
 
 	public:
 
 		Matrix(){
 
-			this->horizontal_ptr = (int**) calloc(0, sizeof(int));
+			this->horizontal_ptr = (int*) calloc(0, sizeof(int));
+			this->horizontalLen = 0;
+			this->verticalLen = 0;
 			this->verticalState = false;
 		};
 
-		int setHorizontalLen(int len){
+		void setHorizontalLen(int len){
 
 			this->releaseMatrix();
 			this->horizontalLen = len;
-			int** check = (int**) realloc(this->horizontal_ptr, this->horizontalLen * sizeof(int));
-			
-			if(check == NULL){
-				free(check);
-				return -1; 
-			};
-			
-			this->horizontal_ptr = check;
 
 			this->restructure();
-
-			return 0;
 		};
 
 		void setVerticalLen(int len){
@@ -61,7 +54,6 @@ class Matrix{
 			
 			this->releaseMatrix();
 			this->restructure();
-
 		};
 
 		void refill(){
@@ -74,7 +66,8 @@ class Matrix{
 					for(int j = 0; j < this->verticalLen; j++){
 
 						//this->horizontal_ptr[i][j] = (int*) malloc(sizeof(int));
-						this->horizontal_ptr[i][j] = temp;
+						//printf("we here bois\n");
+						this->horizontal_ptr[i * verticalLen + j] = temp;
 						temp++;
 					};
 				};
@@ -86,7 +79,8 @@ class Matrix{
 					for(int j = 0; j < this->verticalLen; j++){
 
 						//this->horizontal_ptr[j][i] = (int*) malloc(sizeof(int));
-						this->horizontal_ptr[j][i] = temp;
+						//printf("we here bois\n");
+						this->horizontal_ptr[i * horizontalLen + j] = temp;
 						temp++;
 					};
 				};
@@ -100,7 +94,7 @@ class Matrix{
 		void printMatrix(){
 			for(int i = 0; i < this->horizontalLen; i++){
 				for(int j = 0; j < this->verticalLen; j++){
-					printf("%d ", horizontal_ptr[i][j]);
+					printf("%d ", horizontal_ptr[i * verticalLen + j]);
 				};
 				printf("\n");
 			};
@@ -109,6 +103,7 @@ class Matrix{
 
 int main(){
 Matrix testMtrx;
+//printf("we here bois\n");
 testMtrx.setHorizontalLen(20);
 testMtrx.setVerticalLen(15);
 testMtrx.refill();

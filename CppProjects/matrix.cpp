@@ -1,6 +1,6 @@
 #include <cstdio>
 #include <cstdlib>
-#include <ctime>
+
 
 class Matrix{
 
@@ -113,7 +113,7 @@ class Matrix{
 		
 		};
 
-		int insertPrecise(int input, int x, int y){
+		int set(int input, int x, int y){
 
 			if(x < this->horizontalLen && y < this->verticalLen){
 
@@ -124,7 +124,7 @@ class Matrix{
 		
 		};
 
-		int insertSerial(int* input, int len){
+		int setSerial(int* input, int len){
 
 			if(len > this->horizontalLen * this->verticalLen){
 
@@ -151,7 +151,7 @@ class Matrix{
 
 		};
 
-		int access(int x, int y){
+		int get(int x, int y){
 			
 			if(x < this->horizontalLen && y < this->verticalLen){
 
@@ -170,59 +170,126 @@ int main(){
 Matrix testMtrx;
 
 
-testMtrx.setWidth(20);
-testMtrx.setHeight(15);
+int width;
+int height;
+int input;
+int input1;
+int input2;
+int input3;
+int* temp;
 
-testMtrx.refill();
-testMtrx.printMatrix();
+printf("%s ", "input height:");
+scanf("%d", &width);
+printf("%s ", "input width:");
+scanf("%d", &height);
 
+testMtrx.setHeight(height);
+testMtrx.setWidth(width);
+printf("%s\n", "matrix successfuly created");
 
-printf("\n");
+while(true){
 
+	printf("%s \n", "choose action:");
+	printf("%s\n", "1 - print all");
+	printf("%s\n", "2 - get cell");
+	printf("%s\n", "3 - set cell");
+	printf("%s\n", "4 - serial set");
+	printf("\033[0;31m");
+	printf("%s\n", "5 - resize");
+	printf("%s\n", "6 - empty");
+	printf("%s\n", "7 - fill with data");
+	printf("\e[1m%s\n", "8 - exit program");
+	printf("\033[0m\e[m");
+	scanf("%d", &input);
 
-testMtrx.setWidth(15);
-testMtrx.setHeight(30);
+	switch (input){
 
+		case 1:
+			testMtrx.printMatrix();
+			
+			break;
 
-testMtrx.refill();
-testMtrx.printMatrix(true);
+		case 2:
+			printf("%s ", "input cell x coordinate:");
+			scanf("%d", &input2);
+			printf("%s ", "input cell y coordinate:");
+			scanf("%d", &input3);
+			printf("value: %d\n", testMtrx.get(input2, input3));
+			
+			break;
 
+		case 3:
+			printf("%s ", "input cell x coordinate:");
+			scanf("%d", &input2);
+			printf("%s ", "input cell y coordinate:");
+			scanf("%d", &input3);
+			printf("%s ", "input new cell value:");
+			scanf("%d", &input1);
+			
+			if(testMtrx.set(input1, input2, input3) != -1){
+			
+				printf("inserted data successfully\n");
+			
+			}
+			else{printf("failed to insert data\n");};
+			
+			break;
 
-printf("\n");
+		case 4:
+			printf("%s ", "input amount of values to insert:");
+			scanf("%d", &input1);
+			temp = (int*) calloc(input1, (sizeof(int)));
+			
+			for(int i = 0; i < input1; i++){
 
+				printf("%s %d:\n", "enter value", i);
+				scanf("%d", &input2);
+				temp[i] = input2;
 
-testMtrx.empty();
-testMtrx.printMatrix();
+			};
 
+			if(testMtrx.setSerial(temp, input1) == 1){
 
-printf("\n");
+				printf("data forcefully patrially truncated\n");
 
+			}else{printf("data successfully inserted\n");};
 
-testMtrx.insertPrecise(21, 14, 29);
-testMtrx.printMatrix();
+			free(temp);
 
+			break;
+		case 5:
+			printf("%s ", "input new width:");
+			scanf("%d", &input2);
+			printf("%s ", "input new height:");
+			scanf("%d", &input3);
+			testMtrx.setWidth(input2);
+			testMtrx.setHeight(input3);
 
-printf("\n");
+			break;
 
+		case 6:
+			testMtrx.empty();
+			printf("successfully emptied matrix\n");
+			
+			break;
 
-int arr[] = {10, 11, 12, 13, 14, 15, 16};
-testMtrx.insertSerial(arr, 7);
-testMtrx.printMatrix();
+		case 7:
+			testMtrx.refill();
+			printf("successfully filled with data\n");
+			
+			break;
 
+		case 8:
+			exit(1);
+			
+			break;
+	};
 
-printf("\n");
-
-
-testMtrx.setWidth(3);
-testMtrx.setHeight(2);
-testMtrx.insertSerial(arr, 7);
-testMtrx.printMatrix();
-
-
-printf("\n");
-
-
-printf("%d\n", testMtrx.access(2, 1));
+	input = 0;
+	input1 = 0;
+	input2 = 0;
+	input3 = 0;
+};
 
 return 0;
 

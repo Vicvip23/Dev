@@ -4,17 +4,21 @@
 
 class Matrix{
 
+
 	private:
 
-		int* data_ptr;
-		int horizontalLen;
-		int verticalLen;
-		
+
+		float* data_ptr;
+		unsigned int horizontalLen;
+		unsigned int verticalLen;
+
+
 		void restructure(){
 
-			this->data_ptr = (int*) calloc(this->horizontalLen * this->verticalLen, sizeof(int));
+			this->data_ptr = (float*) calloc(this->horizontalLen * this->verticalLen, sizeof(float));
 
 		};
+
 
 		void releaseMatrix(){
 
@@ -22,17 +26,20 @@ class Matrix{
 		
 		};
 
+
 	public:
+
 
 		Matrix(){
 
-			this->data_ptr = (int*) calloc(0, sizeof(int));
+			this->data_ptr = (float*) calloc(0, sizeof(float));
 			this->horizontalLen = 0;
 			this->verticalLen = 0;
 		
 		};
 
-		void setWidth(int len){
+
+		void setWidth(unsigned int len){
 
 			this->releaseMatrix();
 			this->horizontalLen = len;
@@ -41,7 +48,8 @@ class Matrix{
 		
 		};
 
-		void setHeight(int len){
+
+		void setHeight(unsigned int len){
 
 			this->verticalLen = len;
 			
@@ -50,16 +58,19 @@ class Matrix{
 		
 		};
 
+
 		void refill(){
 
-			int temp = 0;
+			float temp = 0;
 				
-			for(int i = 0; i < this->horizontalLen; i++){
+			for(unsigned int i = 0; i < this->verticalLen; i++){
 
-				for(int j = 0; j < this->verticalLen; j++){
+				for(unsigned int j = 0; j < this->horizontalLen; j++){
 
-					this->data_ptr[i * verticalLen + j] = temp;
-					temp++;
+					this->data_ptr[(i * verticalLen) + j] = temp;
+					//printf("%f || %p\n", temp, &this->data_ptr[(i * verticalLen) + j]);
+					temp+=0.01;
+					if(temp >= 100000){temp = 0;};
 
 				};
 		
@@ -67,15 +78,16 @@ class Matrix{
 		
 		};
 
+
 		void printMatrix(bool verticalState = false){
 
 			if(!verticalState){
 
-				for(int i = 0; i < this->verticalLen; i++){
+				for(unsigned int i = 0; i < this->verticalLen; i++){
 
-					for(int j = 0; j < this->horizontalLen; j++){
+					for(unsigned int j = 0; j < this->horizontalLen; j++){
 
-						printf("%d\t", data_ptr[i * horizontalLen + j]);
+						printf("%f\t", data_ptr[i * horizontalLen + j]);
 		
 					};
 		
@@ -87,11 +99,11 @@ class Matrix{
 
 			if(verticalState){
 
-				for(int i = 0; i < this->verticalLen; i++){
+				for(unsigned int i = 0; i < this->verticalLen; i++){
 
-					for(int j = 0; j < this->horizontalLen; j++){
+					for(unsigned int j = 0; j < this->horizontalLen; j++){
 
-						printf("%d\t", data_ptr[(j * verticalLen) + i]);
+						printf("%f\t", data_ptr[(j * verticalLen) + i]);
 
 					};
 		
@@ -103,17 +115,16 @@ class Matrix{
 		
 		};
 
+
 		void empty(){
 
-			for(int i = 0; i < this->horizontalLen * this->verticalLen; i++){
-
-				this->data_ptr[i] = 0;
-
-			};
+			this->releaseMatrix();
+			this->restructure();
 		
 		};
 
-		int set(int input, int x, int y){
+
+		int set(float input, unsigned int x, unsigned int y){
 
 			if(x < this->horizontalLen && y < this->verticalLen){
 
@@ -124,11 +135,12 @@ class Matrix{
 		
 		};
 
-		int setSerial(int* input, int len, int beginX = 0, int beginY = 0){
+
+		int setSerial(float* input, unsigned long int len, unsigned int beginX = 0, unsigned int beginY = 0){
 
 			if(len > this->horizontalLen * this->verticalLen){
 
-				for(int i = 0; i < this->horizontalLen * this->verticalLen; i++){
+				for(unsigned long int i = 0; i < this->horizontalLen * this->verticalLen; i++){
 
 					this->data_ptr[(beginY * this->verticalLen + beginX) + i] = input[i];
 					if((beginY * this->verticalLen + beginX) + i + 1 >= this->verticalLen * this->horizontalLen){return 1;};
@@ -138,9 +150,9 @@ class Matrix{
 				return 1;
 
 			}
-			else if(len < this->horizontalLen * this->verticalLen){
+			else if(len <= this->horizontalLen * this->verticalLen){
 
-				for(int i = 0; i < len; i++){
+				for(unsigned long int i = 0; i < len; i++){
 
 					this->data_ptr[(beginY * this->verticalLen + beginX) + i] = input[i];
 					if((beginY * this->verticalLen + beginX) + i + 1 >= this->verticalLen * this->horizontalLen){return 1;};
@@ -155,7 +167,8 @@ class Matrix{
 
 		};
 
-		int get(int x, int y){
+
+		int get(unsigned int x, unsigned int y){
 			
 			if(x < this->horizontalLen && y < this->verticalLen){
 

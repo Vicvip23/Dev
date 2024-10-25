@@ -7,18 +7,18 @@ int main(){
 Matrix testMtrx;
 
 
-int width;
-int height;
+unsigned int width;
+unsigned int height;
 int input;
-int input1;
-int input2;
-int input3;
-int* temp;
+float input1;
+unsigned int input2;
+unsigned int input3;
+float* temp;
 
 printf("%s ", "input height:");
-scanf("%d", &width);
+scanf("%u", &width);
 printf("%s ", "input width:");
-scanf("%d", &height);
+scanf("%u", &height);
 
 testMtrx.setHeight(height);
 testMtrx.setWidth(width);
@@ -48,20 +48,20 @@ while(true){
 
 		case 2:
 			printf("%s ", "input cell x coordinate:");
-			scanf("%d", &input2);
+			scanf("%u", &input2);
 			printf("%s ", "input cell y coordinate:");
-			scanf("%d", &input3);
+			scanf("%u", &input3);
 			printf("value: %d\n", testMtrx.get(input2, input3));
 			
 			break;
 
 		case 3:
 			printf("%s ", "input cell x coordinate:");
-			scanf("%d", &input2);
+			scanf("%u", &input2);
 			printf("%s ", "input cell y coordinate:");
-			scanf("%d", &input3);
+			scanf("%u", &input3);
 			printf("%s ", "input new cell value:");
-			scanf("%d", &input1);
+			scanf("%f", &input1);
 			
 			if(testMtrx.set(input1, input2, input3) != -1){
 			
@@ -74,18 +74,17 @@ while(true){
 
 		case 4:
 			printf("%s ", "input amount of values to insert:");
-			scanf("%d", &input1);
-			temp = (int*) calloc(input1, (sizeof(int)));
+			scanf("%u", &input2);
+			temp = (float*) calloc(input2, (sizeof(float)));
 			
-			for(int i = 0; i < input1; i++){
+			for(int i = 0; i < input2; i++){
 
 				printf("%s %d:\n", "enter value", i);
-				scanf("%d", &input2);
-				temp[i] = input2;
+				scanf("%f", (temp + i));
 
 			};
 
-			if(testMtrx.setSerial(temp, input1, 2, 19) == 1){
+			if(testMtrx.setSerial(temp, input2, 2, 19) == 1){
 
 				printf("data forcefully patrially truncated\n");
 
@@ -96,9 +95,9 @@ while(true){
 			break;
 		case 5:
 			printf("%s ", "input new width:");
-			scanf("%d", &input2);
+			scanf("%u", &input2);
 			printf("%s ", "input new height:");
-			scanf("%d", &input3);
+			scanf("%u", &input3);
 			testMtrx.setWidth(input2);
 			testMtrx.setHeight(input3);
 

@@ -8,22 +8,15 @@ class Matrix{
 	private:
 
 
-		float* data_ptr;
-		unsigned int horizontalLen;
-		unsigned int verticalLen;
+		int* data_ptr;
+		size_t horizontalLen;
+		size_t  verticalLen;
 
 
 		void restructure(){
 
-			this->data_ptr = (float*) calloc(this->horizontalLen * this->verticalLen, sizeof(float));
+			this->data_ptr = (int*) calloc(this->horizontalLen * this->verticalLen, sizeof(int));
 
-		};
-
-
-		void releaseMatrix(){
-
-			free(this->data_ptr);
-		
 		};
 
 
@@ -32,9 +25,16 @@ class Matrix{
 
 		Matrix(){
 
-			this->data_ptr = (float*) calloc(0, sizeof(float));
+			this->data_ptr = (int*) calloc(0, sizeof(int));
 			this->horizontalLen = 0;
 			this->verticalLen = 0;
+		
+		};
+
+
+		void releaseMatrix(){
+
+			free(this->data_ptr);
 		
 		};
 
@@ -61,16 +61,15 @@ class Matrix{
 
 		void refill(){
 
-			float temp = 0;
+			int temp = 0;
 				
 			for(unsigned int i = 0; i < this->verticalLen; i++){
 
 				for(unsigned int j = 0; j < this->horizontalLen; j++){
 
-					this->data_ptr[(i * verticalLen) + j] = temp;
-					//printf("%f || %p\n", temp, &this->data_ptr[(i * verticalLen) + j]);
-					temp+=0.01;
-					if(temp >= 100000){temp = 0;};
+					this->data_ptr[(i * this->horizontalLen) + j] = temp;
+					temp++;
+					if(temp >= 2000000000){temp = 0;};
 
 				};
 		
@@ -83,11 +82,11 @@ class Matrix{
 
 			if(!verticalState){
 
-				for(unsigned int i = 0; i < this->verticalLen; i++){
+				for(size_t i = 0; i < this->verticalLen; i++){
 
-					for(unsigned int j = 0; j < this->horizontalLen; j++){
+					for(size_t j = 0; j < this->horizontalLen; j++){
 
-						printf("%f\t", data_ptr[i * horizontalLen + j]);
+						printf("%d\t", data_ptr[(i * horizontalLen) + j]);
 		
 					};
 		
@@ -99,11 +98,11 @@ class Matrix{
 
 			if(verticalState){
 
-				for(unsigned int i = 0; i < this->verticalLen; i++){
+				for(size_t i = 0; i < this->verticalLen; i++){
 
-					for(unsigned int j = 0; j < this->horizontalLen; j++){
+					for(size_t j = 0; j < this->horizontalLen; j++){
 
-						printf("%f\t", data_ptr[(j * verticalLen) + i]);
+						printf("%d\t", data_ptr[(j * verticalLen) + i]);
 
 					};
 		
@@ -124,7 +123,7 @@ class Matrix{
 		};
 
 
-		int set(float input, unsigned int x, unsigned int y){
+		int set(int input, size_t x, size_t y){
 
 			if(x < this->horizontalLen && y < this->verticalLen){
 
@@ -136,7 +135,7 @@ class Matrix{
 		};
 
 
-		int setSerial(float* input, unsigned long int len, unsigned int beginX = 0, unsigned int beginY = 0){
+		int setSerial(int* input, size_t len, size_t beginX = 0, size_t beginY = 0){
 
 			if(len > this->horizontalLen * this->verticalLen){
 
@@ -168,7 +167,7 @@ class Matrix{
 		};
 
 
-		int get(unsigned int x, unsigned int y){
+		int get(size_t x, size_t y){
 			
 			if(x < this->horizontalLen && y < this->verticalLen){
 

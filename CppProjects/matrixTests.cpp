@@ -10,15 +10,15 @@ Matrix testMtrx;
 unsigned int width;
 unsigned int height;
 int input;
-float input1;
+int input1;
 unsigned int input2;
 unsigned int input3;
-float* temp;
+int* temp;
 
 printf("%s ", "input height:");
-scanf("%u", &width);
-printf("%s ", "input width:");
 scanf("%u", &height);
+printf("%s ", "input width:");
+scanf("%u", &width);
 
 testMtrx.setHeight(height);
 testMtrx.setWidth(width);
@@ -61,7 +61,7 @@ while(true){
 			printf("%s ", "input cell y coordinate:");
 			scanf("%u", &input3);
 			printf("%s ", "input new cell value:");
-			scanf("%f", &input1);
+			scanf("%d", &input1);
 			
 			if(testMtrx.set(input1, input2, input3) != -1){
 			
@@ -75,12 +75,12 @@ while(true){
 		case 4:
 			printf("%s ", "input amount of values to insert:");
 			scanf("%u", &input2);
-			temp = (float*) calloc(input2, (sizeof(float)));
+			temp = (int*) calloc(input2, (sizeof(int)));
 			
-			for(int i = 0; i < input2; i++){
+			for(unsigned int i = 0; i < input2; i++){
 
 				printf("%s %d:\n", "enter value", i);
-				scanf("%f", (temp + i));
+				scanf("%d", (temp + i));
 
 			};
 
@@ -116,6 +116,7 @@ while(true){
 			break;
 
 		case 8:
+			testMtrx.releaseMatrix();
 			exit(1);
 			
 			break;

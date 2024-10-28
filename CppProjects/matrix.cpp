@@ -39,7 +39,7 @@ class Matrix{
 		};
 
 
-		void setWidth(unsigned int len){
+		void setWidth(size_t len){
 
 			this->releaseMatrix();
 			this->horizontalLen = len;
@@ -49,7 +49,7 @@ class Matrix{
 		};
 
 
-		void setHeight(unsigned int len){
+		void setHeight(size_t len){
 
 			this->verticalLen = len;
 			

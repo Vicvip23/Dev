@@ -1,6 +1,6 @@
 #include <cstdio>
 #include <cstdlib>
-#include "matrix.cpp"
+#include "../incl/class/matrix.cpp"
 
 int main(){
 

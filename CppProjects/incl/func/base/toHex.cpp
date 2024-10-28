@@ -1,11 +1,7 @@
-#include <iostream>
-#include <cmath>
 #include <string>
 #include <map>
 
-using namespace std;
-
-const map<string, string> binToHex = {
+const std::map<std::string, std::string> binToHex = {
     {"0000", "0"},
     {"0001", "1"},
     {"0010", "2"},
@@ -24,9 +20,9 @@ const map<string, string> binToHex = {
     {"1111", "F"}
 };
 
-string toHex(string bin){
+std::string toHex(std::string bin){
 
-    string hex = "";
+    std::string hex = "";
 
     while(bin.length() % 4 != 0){
         bin.insert(0, 1, '0');
@@ -40,8 +36,4 @@ string toHex(string bin){
 
     return hex;
 
-};
-
-int main(){
-    cout << toHex("111111111111111100000000");
 };

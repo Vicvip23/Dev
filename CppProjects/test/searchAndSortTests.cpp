@@ -5,7 +5,6 @@
 #include "../incl/header/sort.hpp"
 #include "../incl/header/search.hpp"
  
-using namespace std;
 
 int main(){
     const int size = 10;
@@ -19,27 +18,27 @@ int main(){
     fillWithRand(unsortedTable_ptr, size);
     bubbleSort(unsortedTable_ptr, size);
     displayArray(unsortedTable_ptr, size);
-    cout << "\n";
+    std::cout << "\n";
 
     fillWithRand(unsortedTable_ptr, size);
     cocktailSort(unsortedTable_ptr, size);
     displayArray(unsortedTable_ptr, size);
-    cout << "\n";
+    std::cout << "\n";
 
     fillWithRand(unsortedTable_ptr, size);
     insertionSort(unsortedTable_ptr, size);
     displayArray(unsortedTable_ptr, size);
-    cout << "\n";
+    std::cout << "\n";
 
-    cout << *linearSearch(table_ptr, size, key_1) << endl;
-    cout << *linearSearch(table_ptr, size, key_2) << endl;
+    std::cout << *linearSearch(table_ptr, size, key_1) << std::endl;
+    std::cout << *linearSearch(table_ptr, size, key_2) << std::endl;
     displayArray(table_ptr, size);
 
-    cout << *sentinelSearch(table_ptr, size, key_1) << endl;
-    cout << *sentinelSearch(table_ptr, size, key_2) << endl;
+    std::cout << *sentinelSearch(table_ptr, size, key_1) << std::endl;
+    std::cout << *sentinelSearch(table_ptr, size, key_2) << std::endl;
     displayArray(table_ptr, size);
 
-    cout << *binarySearch(table_ptr, 0, size, key_1) << endl;
-    cout << *binarySearch(table_ptr, 0, size, key_2) << endl;
+    std::cout << *binarySearch(table_ptr, 0, size, key_1) << std::endl;
+    std::cout << *binarySearch(table_ptr, 0, size, key_2) << std::endl;
     displayArray(table_ptr, size);
 }

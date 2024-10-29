@@ -5,8 +5,6 @@
 #include "../incl/header/arrayUtils.hpp"
 #include "../incl/header/sort.hpp"
 
-using namespace std;
-
 int x = 100;
 
 class Foo{

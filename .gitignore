@@ -1,2 +1,7 @@
 build/
 .vscode/
+PythonProjects/bin
+PythonProjects/include
+PythonProjects/lib
+PythonProjects/lib64
+*.cfg

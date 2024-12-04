@@ -5,3 +5,4 @@ PythonProjects/include
 PythonProjects/lib
 PythonProjects/lib64
 *.cfg
+CppProjects/todo/

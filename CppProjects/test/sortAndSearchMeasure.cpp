@@ -1,5 +1,6 @@
 #include <cstdio>
 #include <chrono>
+#include <cstring>
 #include "../incl/header/sort.hpp"
 #include "../incl/header/search.hpp"
 #include "../incl/header/arrayUtils.hpp"
@@ -9,6 +10,9 @@ int main(){
 
     unsigned int length;
     unsigned int range;
+    long int duration2;
+    char ifDisplay;
+    bool print;
 
 
     printf("%s \n", "input desired array size (recommended value is 8000):");
@@ -19,6 +23,12 @@ int main(){
     if(range < length){
         range = length;
     };
+
+    printf("\n%s \n", "do you want to display the arrays (y/n)? (may lead to console clutter):");
+    scanf(" %c", &ifDisplay);
+    if(strcmp(&ifDisplay, "y") == 0){
+        print = true;
+    }else{print =  false;};
 
     int* test = new int[length];
 
@@ -31,14 +41,17 @@ int main(){
     fillWithUnique(test, length, range);
     auto end = std::chrono::high_resolution_clock::now();
     auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end-start);
-    
+    duration2 = duration.count();
+
+    if(print){
     start = std::chrono::high_resolution_clock::now();
     displayArray(test, length);
     end = std::chrono::high_resolution_clock::now();
-    auto displayDuration = std::chrono::duration_cast<std::chrono::milliseconds>(end-start);
-    
-    printf("\n%s %ld %s\n", "filling the array with unique random numbers took:", duration.count(), "milliseconds");
-    printf("%s %ld %s\n\n", "displaying the array took:", displayDuration.count(), "milliseconds");
+    duration = std::chrono::duration_cast<std::chrono::milliseconds>(end-start);
+    printf("\n%s %ld %s\n", "displaying the array took:", duration.count(), "milliseconds");
+    };
+
+    printf("%s %ld %s\n\n", "filling the array with unique random numbers took:", duration2, "milliseconds");
 
 
 
@@ -46,14 +59,17 @@ int main(){
     insertionSort(test, length);
     end = std::chrono::high_resolution_clock::now();
     duration = std::chrono::duration_cast<std::chrono::milliseconds>(end-start);
+    duration2 = duration.count();
     
+    if(print){
     start = std::chrono::high_resolution_clock::now();
     displayArray(test, length);
     end = std::chrono::high_resolution_clock::now();
-    displayDuration = std::chrono::duration_cast<std::chrono::milliseconds>(end-start);
-    
-    printf("\n%s %ld %s\n", "sorting the array using insertion sort took:", duration.count(), "milliseconds");
-    printf("%s %ld %s\n", "displaying the array took:", displayDuration.count(), "milliseconds");\
+    duration = std::chrono::duration_cast<std::chrono::milliseconds>(end-start);
+    printf("\n%s %ld %s\n", "displaying the array took:", duration.count(), "milliseconds");
+    };
+
+    printf("%s %ld %s\n", "sorting the array using insertion sort took:", duration2, "milliseconds");
 
 
 

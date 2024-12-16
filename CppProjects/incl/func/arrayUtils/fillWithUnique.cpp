@@ -6,6 +6,7 @@ int fillWithUnique(int* array, int length, int range, bool includeMax){
 
     srand(time(NULL));
     std::vector<int> values;
+    int index;
 
     if(length > range){
         return -1;
@@ -23,7 +24,6 @@ int fillWithUnique(int* array, int length, int range, bool includeMax){
 
     for(int i = 0; i < length; i++){
         
-        int index;
         index = rand() % values.size();
         array[i] = values[index];
         values.erase(values.begin() + index);

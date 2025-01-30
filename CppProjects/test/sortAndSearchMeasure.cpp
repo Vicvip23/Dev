@@ -38,14 +38,14 @@ int main(){
 
 
     auto start = std::chrono::high_resolution_clock::now();
-    fillWithUnique(test, length, range);
+    arrayUtils::fillWithUnique(test, length, range);
     auto end = std::chrono::high_resolution_clock::now();
     auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end-start);
     duration2 = duration.count();
 
     if(print){
     start = std::chrono::high_resolution_clock::now();
-    displayArray(test, length);
+    arrayUtils::displayArray(test, length);
     end = std::chrono::high_resolution_clock::now();
     duration = std::chrono::duration_cast<std::chrono::milliseconds>(end-start);
     printf("\n%s %ld %s\n", "displaying the array took:", duration.count(), "milliseconds");
@@ -56,14 +56,14 @@ int main(){
 
 
     start = std::chrono::high_resolution_clock::now();
-    insertionSort(test, length);
+    sort::insertionSort(test, length);
     end = std::chrono::high_resolution_clock::now();
     duration = std::chrono::duration_cast<std::chrono::milliseconds>(end-start);
     duration2 = duration.count();
     
     if(print){
     start = std::chrono::high_resolution_clock::now();
-    displayArray(test, length);
+    arrayUtils::displayArray(test, length);
     end = std::chrono::high_resolution_clock::now();
     duration = std::chrono::duration_cast<std::chrono::milliseconds>(end-start);
     printf("\n%s %ld %s\n", "displaying the array took:", duration.count(), "milliseconds");
@@ -74,9 +74,9 @@ int main(){
 
 
     start = std::chrono::high_resolution_clock::now();
-    int* linearSearchResult = linearSearch(test, length, *(test + length - 2));
+    int* linearSearchResult = search::linearSearch(test, length, *(test + length - 2));
     for(int i = 0; i < 9999; i++){
-        linearSearch(test, length, *(test + length - 2));
+        search::linearSearch(test, length, *(test + length - 2));
     };
     end = std::chrono::high_resolution_clock::now();
     auto microDuration = std::chrono::duration_cast<std::chrono::microseconds>(end-start) / 10000;
@@ -87,9 +87,9 @@ int main(){
 
 
     start = std::chrono::high_resolution_clock::now();
-    int* binarySearchResult = binarySearch(test, 0, length, *(test + length - 2));
+    int* binarySearchResult = search::binarySearch(test, 0, length, *(test + length - 2));
     for(int i = 0; i < 9999; i++){
-        binarySearch(test, 0, length, *(test + length - 2));
+        search::binarySearch(test, 0, length, *(test + length - 2));
     };
     end = std::chrono::high_resolution_clock::now();
     auto nanoDuration = std::chrono::duration_cast<std::chrono::nanoseconds>(end-start) / 10000;

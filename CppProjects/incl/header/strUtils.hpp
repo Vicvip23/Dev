@@ -1,3 +1,5 @@
 #include "../func/strUtils/reverse.cpp"
 
-std::string stringReverse(std::string arg);
+namespace strUtils {
+    std::string stringReverse(std::string arg);
+}

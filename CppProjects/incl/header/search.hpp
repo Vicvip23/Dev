@@ -4,8 +4,10 @@
 #include "../func/search/binarySearch.cpp"
 #include "../func/search/sentinelSearch.cpp"
 
-int* searchMax(int* arr, int len);
-int* searchMin(int* arr, int len);
-int* linearSearch(int* arr, int len, int key);
-int* binarySearch(int* arr, int first, int last, int key);
-int* sentinelSearch(int* arr, int len, int key);
+namespace search {
+    int* searchMax(int* arr, int len);
+    int* searchMin(int* arr, int len);
+    int* linearSearch(int* arr, int len, int key);
+    int* binarySearch(int* arr, int first, int last, int key);
+    int* sentinelSearch(int* arr, int len, int key);
+}

@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 #include <cmath>
-#include "../incl/header/base.hpp"
+#include "../incl/header/baseConversion.hpp"
 
 int main(){
 
@@ -16,19 +16,19 @@ int main(){
         case 1:
             std::cout << "Input your Decimal number: ";
             std::cin >> inputDec;
-            std::cout << "The resulting Binary number is: " << toBinary(inputDec);
+            std::cout << "The resulting Binary number is: " << baseConversion::toBinary(inputDec);
         break;
 
         case 2:
             std::cout << "Input your Decimal number: ";
             std::cin >> inputBin;
-            std::cout << "The resulting Binary number is: " << toDecimal(inputBin);
+            std::cout << "The resulting Binary number is: " << baseConversion::toDecimal(inputBin);
         break;
 
         case 3:
             std::cout << "Input your Decimal number: ";
             std::cin >> inputBin;
-            std::cout << "The resulting Binary number is: " << toHex(inputBin);
+            std::cout << "The resulting Binary number is: " << baseConversion::toHex(inputBin);
         break;
     };
 };

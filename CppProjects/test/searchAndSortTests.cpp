@@ -15,30 +15,30 @@ int main(){
     int* unsortedTable_ptr = unsortedTable;
     int* table_ptr = table;
     
-    fillWithRand(unsortedTable_ptr, size);
-    bubbleSort(unsortedTable_ptr, size);
-    displayArray(unsortedTable_ptr, size);
+    arrayUtils::fillWithRand(unsortedTable_ptr, size);
+    sort::bubbleSort(unsortedTable_ptr, size);
+    arrayUtils::displayArray(unsortedTable_ptr, size);
     std::cout << "\n";
 
-    fillWithRand(unsortedTable_ptr, size);
-    cocktailSort(unsortedTable_ptr, size);
-    displayArray(unsortedTable_ptr, size);
+    arrayUtils::fillWithRand(unsortedTable_ptr, size);
+    sort::cocktailSort(unsortedTable_ptr, size);
+    arrayUtils::displayArray(unsortedTable_ptr, size);
     std::cout << "\n";
 
-    fillWithRand(unsortedTable_ptr, size);
-    insertionSort(unsortedTable_ptr, size);
-    displayArray(unsortedTable_ptr, size);
+    arrayUtils::fillWithRand(unsortedTable_ptr, size);
+    sort::insertionSort(unsortedTable_ptr, size);
+    arrayUtils::displayArray(unsortedTable_ptr, size);
     std::cout << "\n";
 
-    std::cout << *linearSearch(table_ptr, size, key_1) << std::endl;
-    std::cout << *linearSearch(table_ptr, size, key_2) << std::endl;
-    displayArray(table_ptr, size);
+    std::cout << *search::linearSearch(table_ptr, size, key_1) << std::endl;
+    std::cout << *search::linearSearch(table_ptr, size, key_2) << std::endl;
+    arrayUtils::displayArray(table_ptr, size);
 
-    std::cout << *sentinelSearch(table_ptr, size, key_1) << std::endl;
-    std::cout << *sentinelSearch(table_ptr, size, key_2) << std::endl;
-    displayArray(table_ptr, size);
+    std::cout << *search::sentinelSearch(table_ptr, size, key_1) << std::endl;
+    std::cout << *search::sentinelSearch(table_ptr, size, key_2) << std::endl;
+    arrayUtils::displayArray(table_ptr, size);
 
-    std::cout << *binarySearch(table_ptr, 0, size, key_1) << std::endl;
-    std::cout << *binarySearch(table_ptr, 0, size, key_2) << std::endl;
-    displayArray(table_ptr, size);
+    std::cout << *search::binarySearch(table_ptr, 0, size, key_1) << std::endl;
+    std::cout << *search::binarySearch(table_ptr, 0, size, key_2) << std::endl;
+    arrayUtils::displayArray(table_ptr, size);
 }

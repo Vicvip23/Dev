@@ -28,7 +28,7 @@ int main(){
     scanf(" %c", &ifDisplay);
     if(strcmp(&ifDisplay, "y") == 0){
         print = true;
-    }else{print =  false;};
+    }else{print = false;};
 
     int* test = new int[length];
 

@@ -1,3 +1,4 @@
+namespace search {
 int* sentinelSearch(int* arr, int len, int key){
 
     int last = *(arr + len - 1);
@@ -14,4 +15,5 @@ int* sentinelSearch(int* arr, int len, int key){
         return (arr + len - 1);
     }
     else{return nullptr;};
+}
 }

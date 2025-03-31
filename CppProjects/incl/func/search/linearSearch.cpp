@@ -1,3 +1,4 @@
+namespace search {
 int* linearSearch(int* arr, int len, int key){
 
     for (int i = 0; i < len; i++){
@@ -10,4 +11,5 @@ int* linearSearch(int* arr, int len, int key){
 
     return nullptr;
 
+}
 }

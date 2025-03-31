@@ -2,6 +2,7 @@
 #include <ctime>
 #include <cstdlib>
 
+namespace identifier {
 int fillWithUnique(int* array, int length, int range, bool includeMax){
 
     srand(time(NULL));
@@ -32,4 +33,5 @@ int fillWithUnique(int* array, int length, int range, bool includeMax){
 
     return 0;
 
+}
 }

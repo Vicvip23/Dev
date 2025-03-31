@@ -1,5 +1,6 @@
 #include <string>
 
+namespace strUtils {
 std::string stringReverse(std::string arg){
 
     char temp;
@@ -15,4 +16,5 @@ std::string stringReverse(std::string arg){
         }
     }
     return arg;
+}
 }

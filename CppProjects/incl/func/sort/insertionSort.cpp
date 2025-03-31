@@ -1,3 +1,4 @@
+namespace sort {
 void insertionSort(int* arr, int len){
 
     int temp, j;
@@ -18,4 +19,5 @@ void insertionSort(int* arr, int len){
 
     };
 
+}
 }

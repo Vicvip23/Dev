@@ -1,3 +1,4 @@
+namespace search {
 int* searchMin(int* arr, int len){
 
     int min = *arr;
@@ -14,4 +15,5 @@ int* searchMin(int* arr, int len){
 
     return min_ptr;
 
+}
 }

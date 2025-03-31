@@ -1,3 +1,4 @@
+namespace sort {
 void cocktailSort(int* arr, int len) {
     bool swapped = true;
     int start = 0;
@@ -27,4 +28,5 @@ void cocktailSort(int* arr, int len) {
         };
         start++;
     };
+}
 }

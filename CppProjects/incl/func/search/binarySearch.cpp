@@ -1,3 +1,4 @@
+namespace search {
 int* binarySearch(int* arr, int first, int last, int key){
 
     while (first <= last) {
@@ -17,4 +18,5 @@ int* binarySearch(int* arr, int first, int last, int key){
     };
 
     return nullptr;
+}
 }

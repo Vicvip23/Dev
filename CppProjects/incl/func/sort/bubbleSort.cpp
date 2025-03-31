@@ -1,3 +1,4 @@
+namespace sort {
 void bubbleSort(int* arr, int len){
     int temp;
     for(int i = 0; i < len; i++){
@@ -9,4 +10,5 @@ void bubbleSort(int* arr, int len){
             };
         };
     };
+}
 }

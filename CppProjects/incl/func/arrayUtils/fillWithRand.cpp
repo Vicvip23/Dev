@@ -1,6 +1,7 @@
 #include <ctime>
 #include <cstdlib>
 
+namespace arrayUtils {
 void fillWithRand(int* arr, int len){
 
     srand(time(NULL));
@@ -11,4 +12,5 @@ void fillWithRand(int* arr, int len){
 
     };
 
+}
 }
